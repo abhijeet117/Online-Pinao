@@ -21,7 +21,7 @@ let tone = [
 let buttons = document.querySelectorAll("button");
 let aud = document.querySelector('audio');
 
-buttons.forEach(function (btn) {
+/* buttons.forEach(function (btn) {
   btn.addEventListener("click", function () {
     let htmll = btn.className;
     for(let i = 0; i<tone.length; i++) {
@@ -31,5 +31,19 @@ buttons.forEach(function (btn) {
     }
     
   });
-});
+}); */
+
+buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        let key = btn.dataset.key;
+
+        let sound = tone.find((t)=> t.key === key);
+
+        if(sound) {
+            aud.src = sound.src;
+            aud.play()
+        }
+    })
+})
+
 
